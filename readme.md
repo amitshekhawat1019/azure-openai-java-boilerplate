@@ -87,7 +87,7 @@ private static OpenAIClient client = new AzureOpenAIClient().getOpenAIClient();
 
 		for (EmbeddingItem item : embeddings.getData()) {
 			for (Double embedding : item.getEmbedding()) {
-				System.out.printf("embedding: " +item.getEmbedding());
+				System.out.printf("%f;", embedding);
 			}
 		}
 ```
