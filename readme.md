@@ -11,7 +11,7 @@ apache-maven-3.8.6
 
 ## Configuration
 
-update properties file located at **resources/azureopenai.properties** with below properties
+update properties file located at **./src/main/resources/azureopenai.properties** with below properties
 
 - AZURE_OPENAI_KEY="YOUR OPEN AI API KEY"
 - AZURE_OPENAI_ENDPOINT="YOUR OPEN AI ENDPOINT"
