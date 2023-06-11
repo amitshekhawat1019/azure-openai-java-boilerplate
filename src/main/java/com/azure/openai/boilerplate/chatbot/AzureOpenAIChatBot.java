@@ -1,11 +1,11 @@
-package com.azure.openai.chatbot;
+package com.azure.openai.boilerplate.chatbot;
 
 import java.util.Scanner;
 
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.models.Choice;
 import com.azure.ai.openai.models.Completions;
-import com.azure.openai.client.AzureOpenAIClient;
+import com.azure.openai.boilerplate.AzureOpenAIClient;
 
 public class AzureOpenAIChatBot {
 
@@ -27,12 +27,12 @@ public class AzureOpenAIChatBot {
 				System.out.println("Ending Chat...Thanks You..!!!");
 				System.exit(0);
 			}
-			System.out.println("Your question: " + prompt);
 
 			Completions completions = client.getCompletions(AzureOpenAIClient.COMPLETION_MODEL, prompt);
 
 			for (Choice choice : completions.getChoices()) {
-				System.out.printf("Answer: ", choice.getText());
+				System.out.printf("Answer:", choice.getText());
+				System.out.printf("%s.%n", choice.getText());
 			}
 		}
 

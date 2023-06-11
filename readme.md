@@ -5,7 +5,7 @@ The Azure OpenAI Java Boilerplate is a starter template designed to accelerate t
 ## Install
 
 ```
-mvn clean install
+mvn clean package
 ```
 
 ## Configuration
@@ -20,7 +20,7 @@ update properties file located at **resources/azureopenai.properties** with belo
 ## Class
 
 1. **AzureOpenAIClient** - 
-   ./src/com/azure/openai/client/AzureOpenAIClient.java
+   ./src/main/java/com/azure/openai/boilerplate/AzureOpenAIClient.java
 
 	1. This class provides a client for accessing the OpenAI API using the configuration specified in the resources/azureopenai.properties file.
 	2. Use the AzureOpenAIClient instance to access the OpenAI API methods.
@@ -34,19 +34,19 @@ private static OpenAIClient client = new AzureOpenAIClient().getOpenAIClient();
 ## Run Text Completion
 
 ```
-java ./src/com/azure/openai/completion/AzureOpenAITextCompletions.java
+java -cp target/azure-openai-java-boilerplate-1.0.0-jar-with-dependencies.jar com.azure.openai.boilerplate.completion.AzureOpenAITextCompletions
 ```
 
 ## Run chatBot example
 
 ```
-java ./src/com/azure/openai/chatbot/AzureOpenAIChatBot.java
+java -cp target/azure-openai-java-boilerplate-1.0.0-jar-with-dependencies.jar com.azure.openai.boilerplate.chatbot.AzureOpenAIChatBot
 ```
 
 ## Run Text Embedding
 
 ```
-java ./src/com/azure/openai/embeddings/AzureOpenTextEmbeddings.java
+java -cp target/azure-openai-java-boilerplate-1.0.0-jar-with-dependencies.jar com.azure.openai.boilerplate.embeddings.AzureOpenTextEmbeddings
 ```
 
 ## Examples
@@ -60,14 +60,12 @@ private static String MODEL_ID = "gpt-35-turbo-base";
 
 public static void main(String[] args) {
 		List<String> prompt = new ArrayList<>();
-		prompt.add("What is Java ??");
+		prompt.add("What is Java ?");
 
-		Completions completions = client.getCompletions(MODEL_ID, new CompletionsOptions(prompt));
-
+		Completions completions = client.getCompletions(AzureOpenAIClient.COMPLETION_MODEL, new CompletionsOptions(prompt));
 		for (Choice choice : completions.getChoices()) {
-			System.out.printf("Text: " + choice.getText());
+			System.out.printf("Index: %d, Text: %s.%n", choice.getIndex(), choice.getText());
 		}
-
 	}
 ```
 
@@ -76,21 +74,19 @@ public static void main(String[] args) {
 ### 2. Create Text Embeddings
 
 ```
-private static OpenAIClient client = new AzureOpenAIClient().getOpenAIClient();
-	
-	private static String MODEL_ID = "ada-embedding-v2";
+	private static OpenAIClient client = new AzureOpenAIClient().getOpenAIClient();
 
 	public static void main(String[] args) {
 		EmbeddingsOptions embeddingsOptions = new EmbeddingsOptions(Arrays.asList("Your text string goes here"));
 
-		Embeddings embeddings = client.getEmbeddings(MODEL_ID, embeddingsOptions);
+		Embeddings embeddings = client.getEmbeddings(AzureOpenAIClient.EMBEDDINGS_MODEL, embeddingsOptions);
 
 		for (EmbeddingItem item : embeddings.getData()) {
+			System.out.printf("Index: %d.%n", item.getIndex());
 			for (Double embedding : item.getEmbedding()) {
 				System.out.printf("%f;", embedding);
 			}
 		}
-```
+	}
 
-> You can find a complete code snippet in the 
-java ./src/com/azure/openai/embeddings/AzureOpenTextEmbeddings.java class.
+```

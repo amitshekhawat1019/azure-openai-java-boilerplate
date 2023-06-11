@@ -1,4 +1,4 @@
-package com.azure.openai.completion;
+package com.azure.openai.boilerplate.completion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.azure.ai.openai.models.Choice;
 import com.azure.ai.openai.models.Completions;
 import com.azure.ai.openai.models.CompletionsOptions;
 import com.azure.ai.openai.models.CompletionsUsage;
-import com.azure.openai.client.AzureOpenAIClient;
+import com.azure.openai.boilerplate.AzureOpenAIClient;
 
 public class AzureOpenAITextCompletions {
 
@@ -17,7 +17,7 @@ public class AzureOpenAITextCompletions {
 
 	public static void main(String[] args) {
 		List<String> prompt = new ArrayList<>();
-		prompt.add("Say this is a test");
+		prompt.add("What is Java ?");
 
 		Completions completions = client.getCompletions(AzureOpenAIClient.COMPLETION_MODEL, new CompletionsOptions(prompt));
 
@@ -28,9 +28,8 @@ public class AzureOpenAITextCompletions {
 
 		CompletionsUsage usage = completions.getUsage();
 		System.out.printf("Usage: number of prompt token is %d, "
-				+ "number of completion token is %d, and number of total tokens in request and response is %d.%n",
+						+ "number of completion token is %d, and number of total tokens in request and response is %d.%n",
 				usage.getPromptTokens(), usage.getCompletionTokens(), usage.getTotalTokens());
-
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.azure.openai.embeddings;
+package com.azure.openai.boilerplate.embeddings;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import com.azure.ai.openai.models.EmbeddingItem;
 import com.azure.ai.openai.models.Embeddings;
 import com.azure.ai.openai.models.EmbeddingsOptions;
 import com.azure.ai.openai.models.EmbeddingsUsage;
-import com.azure.openai.client.AzureOpenAIClient;
+import com.azure.openai.boilerplate.AzureOpenAIClient;
 
 public class AzureOpenTextEmbeddings {
 	
