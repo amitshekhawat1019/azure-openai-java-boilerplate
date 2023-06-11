@@ -2,6 +2,13 @@
 
 The Azure OpenAI Java Boilerplate is a starter template designed to accelerate the process of integrating and utilizing Azure OpenAI's deployed models in your Java applications. It provides a foundation for quickly writing new use cases and leveraging the power of OpenAI's models for various tasks.
 
+## Pre-requisite
+
+```
+Java version: 1.8
+apache-maven-3.8.6
+```
+
 ## Install
 
 ```
