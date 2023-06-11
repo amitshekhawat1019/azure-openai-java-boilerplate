@@ -9,12 +9,6 @@ Java version: 1.8
 apache-maven-3.8.6
 ```
 
-## Install
-
-```
-mvn clean package
-```
-
 ## Configuration
 
 update properties file located at **resources/azureopenai.properties** with below properties
@@ -23,6 +17,12 @@ update properties file located at **resources/azureopenai.properties** with belo
 - AZURE_OPENAI_ENDPOINT="YOUR OPEN AI ENDPOINT"
 - AZURE_COMPLETION_MODEL="YOUR OPEN AI COMPLETION MODEL NAME"
 - AZURE_EMBEDDINGS_MODEL="YOUR OPEN AI EMBEDDINGS MODEL NAME"
+
+## Install
+
+```
+mvn clean package
+```
 
 ## Class
 
